@@ -222,7 +222,8 @@ static void WritePicaReg(u32 id, u32 value, u32 mask) {
                     continue;
 
                 u8* texture_data = Memory::GetPhysicalPointer(texture.config.GetPhysicalAddress());
-                if (texture_data == NULL) {
+                if (texture_data == nullptr) {
+                    LOG_ERROR(HW_GPU, "Texture's data at index %d is null", i);
                     return;
                 }
                 if (g_debug_context && Pica::g_debug_context->recorder)
